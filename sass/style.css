@@ -30,7 +30,8 @@
   line-height: 16px;
 }
 
-.grid-container {
+/** GRID LINES METHOD  **/
+.grid-lines-container {
   display: -ms-grid;
   display: grid;
   /** grid-template: 1fr 1fr (1fr / repeat(3,1fr)) **/
@@ -43,9 +44,17 @@
   grid-auto-rows: minmax(100px, auto);
   gap: 5px;
   grid-auto-flow: dense;
+  /** align-items: center **/
+  /** justify-items: center    **/
+  /** justify-content: space-around  **/
+  /** align-content: space-around **/
+  place-content: space-around space-around;
+  /** place-content: justify-content + align-content  **/
+  /** place-items: justify-items + align-items  **/
+  height: 500px;
 }
 
-.grid-element {
+.lines-element {
   background-color: #010160;
   color: #fff;
   line-height: 50px;
@@ -55,23 +64,144 @@
   border-radius: 4px;
 }
 
-.grid-element__1 {
+.lines-element__1 {
   background-color: red;
   border: none;
   -ms-grid-column: col1-s;
       grid-column-start: col1-s;
   grid-column-end: col4-s;
+  /** place-self: justify-self + align-self  **/
 }
 
-.grid-element__2 {
+.lines-element__2 {
   /** grid-row: 3/4 **/
   /** grid-column: 2/3 **/
   grid-row: row3-s / row4-s;
   grid-column: col2-s/col3-s;
 }
 
-.grid-element__3 {
+.lines-element__3 {
+  background-color: green;
   grid-row: row2-s/row4-s;
   grid-column: col3-s/col5-s;
+  /** align-self: center  **/
+  /** justify-self: center **/
+}
+
+/** GRID NAME METHOD  **/
+.grid-name-container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(150px, 300px))[3];
+      grid-template-columns: repeat(3, minmax(150px, 300px));
+  -ms-grid-rows: (minmax(100px, auto))[3];
+      grid-template-rows: repeat(3, minmax(100px, auto));
+  grid-auto-rows: minmax(100px, auto);
+  gap: 5px;
+      grid-template-areas: "header header message" "blog blog message" "footer footer footer";
+}
+
+#header {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: header;
+}
+
+#blog {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: blog;
+}
+
+#message {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  -ms-grid-column: 3;
+  grid-area: message;
+}
+
+#footer {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
+  grid-area: footer;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  grid-gap: 5px;
+}
+
+.name-element {
+  background-color: #010160;
+  color: #fff;
+  line-height: 50px;
+  text-align: center;
+  font-size: 26px;
+  border: 1px solid #000;
+  border-radius: 4px;
+}
+
+.name-element_orange {
+  background-color: orange;
+}
+
+@media (max-width: 768px) {
+  .grid-name-container {
+    -ms-grid-columns: (2fr)[2];
+        grid-template-columns: repeat(2, 2fr);
+    -ms-grid-rows: (minmax(100px, auto))[4];
+        grid-template-rows: repeat(4, minmax(100px, auto));
+        grid-template-areas: "header header" "blog blog" "message message" "footer footer";
+  }
+}
+
+#header {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: header;
+}
+
+#blog {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: blog;
+}
+
+#message {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  -ms-grid-column: 3;
+  grid-area: message;
+}
+
+#footer {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
+  grid-area: footer;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  grid-gap: 5px;
+}
+
+#footer .name-element {
+  background-color: #010160;
+  color: #fff;
+  line-height: 50px;
+  text-align: center;
+  font-size: 26px;
+  border: 1px solid #000;
+  border-radius: 4px;
+}
+
+#footer .name-element_orange {
+  background-color: orange;
 }
 /*# sourceMappingURL=style.css.map */

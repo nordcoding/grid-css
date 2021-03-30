@@ -23,7 +23,9 @@
 	font-size: 14px
 	line-height: 16px
 
-.grid-container
+/** GRID LINES METHOD  **/
+
+.grid-lines-container
 	display: grid
 	/** grid-template: 1fr 1fr (1fr / repeat(3,1fr)) **/
 	/** grid-template-columns: repeat( auto-fill, minmax(150px, 300px)) **/
@@ -32,9 +34,17 @@
 	grid-template-rows: [row1-s]150px [row2-s]150px [row3-s]150px [row4-s]150px 
 	grid-auto-rows: minmax(100px, auto)
 	gap: 5px
-	grid-auto-flow: dense    
+	grid-auto-flow: dense 
+	/** align-items: center **/
+	/** justify-items: center    **/ 
+	/** justify-content: space-around  **/
+	/** align-content: space-around **/
+	place-content: space-around space-around 
+	/** place-content: justify-content + align-content  **/
+	/** place-items: justify-items + align-items  **/
+	height: 500px 
 
-.grid-element
+.lines-element
 	background-color: rgba(1, 1, 96, 1)
 	color: #fff
 	line-height: 50px
@@ -46,13 +56,84 @@
 		background-color: red 
 		border: none
 		grid-column-start: col1-s 
-		grid-column-end: col4-s 
+		grid-column-end: col4-s
+		/** place-self: justify-self + align-self  **/
 	&__2
 		/** grid-row: 3/4 **/
 		/** grid-column: 2/3 **/ 
 		grid-row: row3-s / row4-s 
 		grid-column: col2-s/col3-s 
 	&__3
+		background-color: green 
 		grid-row: row2-s/row4-s
 		grid-column: col3-s/col5-s
+		/** align-self: center  **/
+		/** justify-self: center **/
+
+/** GRID NAME METHOD  **/
+
+.grid-name-container
+	display: grid
+	grid-template-columns: repeat( 3, minmax(150px, 300px))
+	grid-template-rows: repeat( 3, minmax(100px, auto))
+	grid-auto-rows: minmax(100px, auto)
+	gap: 5px
+	grid-template-areas: "header header message" "blog blog message" "footer footer footer" //"." - empty space // 
+
+
+#header
+	grid-area: header 
+#blog
+	grid-area: blog
+#message
+	grid-area: message
+#footer
+	grid-area: footer
+	display: grid
+	grid-template-columns: repeat(3, 1fr) 
+	grid-gap: 5px
+
+.name-element
+	background-color: rgba(1, 1, 96, 1)
+	color: #fff
+	line-height: 50px
+	text-align: center
+	font-size: 26px
+	border: 1px solid #000
+	border-radius: 4px
+	&_orange
+		background-color: orange
+
+@media ( max-width: 768px )
+	.grid-name-container
+		grid-template-columns: repeat( 2, 2fr)
+		grid-template-rows: repeat( 4, minmax(100px, auto))
+		grid-template-areas: "header header" "blog blog" "message message" "footer footer"
+
+#header
+	grid-area: header 
+#blog
+	grid-area: blog
+#message
+	grid-area: message
+#footer
+	grid-area: footer
+	display: grid
+	grid-template-columns: repeat(3, 1fr) 
+	grid-gap: 5px
+
+	.name-element
+		background-color: rgba(1, 1, 96, 1)
+		color: #fff
+		line-height: 50px
+		text-align: center
+		font-size: 26px
+		border: 1px solid #000
+		border-radius: 4px
+		&_orange
+			background-color: orange
+	
+
+
+
 
