@@ -1,26 +1,77 @@
-.rounds {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  box-sizing-margin: 0;
+  box-sizing-padding: 0;
 }
 
-.rounds__item {
-  width: 50px;
-  height: 50px;
-  border-radius: 100%;
+.grid-news {
+  width: 1140px;
+  margin: 80px auto 80px auto;
+  background-color: white;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(240px, auto))[4];
+      grid-template-columns: repeat(4, minmax(240px, auto));
+  -ms-grid-rows: (minmax(260px, auto))[2];
+      grid-template-rows: repeat(2, minmax(260px, auto));
+  grid-auto-rows: 260px;
+  gap: 60px;
+}
+
+.grid-item img {
+  width: 100%;
+}
+
+.text {
+  margin-top: 15px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.grid-container {
+  display: -ms-grid;
+  display: grid;
+  /** grid-template: 1fr 1fr (1fr / repeat(3,1fr)) **/
+  /** grid-template-columns: repeat( auto-fill, minmax(150px, 300px)) **/
+  /** grid-template-rows: repeat( 3, minmax(100px, auto)) **/
+  -ms-grid-columns: [col1-s] 150px [col2-s] 150px [col3-s] 150px [col4-s] 150px [col5-s] 150px;
+      grid-template-columns: [col1-s] 150px [col2-s] 150px [col3-s] 150px [col4-s] 150px [col5-s] 150px;
+  -ms-grid-rows: [row1-s] 150px [row2-s] 150px [row3-s] 150px [row4-s] 150px;
+      grid-template-rows: [row1-s] 150px [row2-s] 150px [row3-s] 150px [row4-s] 150px;
+  grid-auto-rows: minmax(100px, auto);
+  gap: 5px;
+  grid-auto-flow: dense;
+}
+
+.grid-element {
+  background-color: #010160;
+  color: #fff;
+  line-height: 50px;
+  text-align: center;
+  font-size: 26px;
+  border: 1px solid #000;
+  border-radius: 4px;
+}
+
+.grid-element__1 {
   background-color: red;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  border: none;
+  -ms-grid-column: col1-s;
+      grid-column-start: col1-s;
+  grid-column-end: col4-s;
 }
 
-.rounds__item:nth-child(2n+1) {
-  background-color: green;
+.grid-element__2 {
+  /** grid-row: 3/4 **/
+  /** grid-column: 2/3 **/
+  grid-row: row3-s / row4-s;
+  grid-column: col2-s/col3-s;
+}
+
+.grid-element__3 {
+  grid-row: row2-s/row4-s;
+  grid-column: col3-s/col5-s;
 }
 /*# sourceMappingURL=style.css.map */

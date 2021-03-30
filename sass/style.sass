@@ -1,12 +1,58 @@
-.rounds
-    display: flex 
-    justify-content: center 
-    &__item
-        width: 50px
-        height: 50px
-        border-radius: 100% 
-        background-color: red
-        justify-content: center
-        align-items: center
-        &:nth-child(2n+1)
-            background-color: green 
+*
+	box-sizing: border-box
+    margin: 0
+    padding: 0
+	
+
+.grid-news
+	width: 1140px
+	margin: 80px auto 80px auto
+	background-color: white
+	display: grid
+	grid-template-columns: repeat(4, minmax(240px, auto))
+	grid-template-rows: repeat(2, minmax(260px, auto))
+	grid-auto-rows: 260px
+	gap: 60px
+
+.grid-item img
+	width: 100%
+
+.text
+	margin-top: 15px
+	font-weight: 500
+	font-size: 14px
+	line-height: 16px
+
+.grid-container
+	display: grid
+	/** grid-template: 1fr 1fr (1fr / repeat(3,1fr)) **/
+	/** grid-template-columns: repeat( auto-fill, minmax(150px, 300px)) **/
+	/** grid-template-rows: repeat( 3, minmax(100px, auto)) **/
+	grid-template-columns: [col1-s]150px [col2-s]150px [col3-s]150px [col4-s]150px [col5-s]150px
+	grid-template-rows: [row1-s]150px [row2-s]150px [row3-s]150px [row4-s]150px 
+	grid-auto-rows: minmax(100px, auto)
+	gap: 5px
+	grid-auto-flow: dense    
+
+.grid-element
+	background-color: rgba(1, 1, 96, 1)
+	color: #fff
+	line-height: 50px
+	text-align: center
+	font-size: 26px
+	border: 1px solid #000
+	border-radius: 4px
+	&__1
+		background-color: red 
+		border: none
+		grid-column-start: col1-s 
+		grid-column-end: col4-s 
+	&__2
+		/** grid-row: 3/4 **/
+		/** grid-column: 2/3 **/ 
+		grid-row: row3-s / row4-s 
+		grid-column: col2-s/col3-s 
+	&__3
+		grid-row: row2-s/row4-s
+		grid-column: col3-s/col5-s
+
